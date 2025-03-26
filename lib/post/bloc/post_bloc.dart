@@ -11,6 +11,8 @@ class PostBloc extends Bloc<PostEvent, PostState> {
   final _repository = PostRepository();
   PostBloc() : super(PostInitial()) {
     on<GetPostEvent>((event, emit) async {
+      print("Получено событие GetPostEvent");
+
       emit(LoadingPostState());
       try {
         final posts = await _repository.getPosts();
