@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'package:bloc/src/bloc.dart';
+import 'package:flutter_application_1/post/bloc/post_bloc.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_application_1/models/get_post.dart';
 
