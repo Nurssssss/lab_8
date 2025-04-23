@@ -40,7 +40,7 @@ class _FourthPageState extends State<FourthPage> {
               style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 20),
-            Text("ФИО: $fullName", style: TextStyle(fontSize: 18)),
+            Text('ФИО: ${['username']}', style: TextStyle(fontSize: 18)),
             SizedBox(height: 10),
             Text("Email: $email", style: TextStyle(fontSize: 18)),
             SizedBox(height: 10),

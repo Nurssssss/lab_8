@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'main_screen.dart';
 
@@ -16,13 +19,16 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
   Future<void> _registerUser() async {
     if (_formKey.currentState!.validate()) {
-      final prefs = await SharedPreferences.getInstance();
-
-      await prefs.setString('fullName', _fullNameController.text);
-      await prefs.setString('email', _emailController.text);
-      await prefs.setString('phone', _phoneController.text);
-      await prefs.setBool('isAuthenticated', true);
-
+      const url =
+          'https://database-5ebe6-default-rtdb.firebaseio.com/user.json';
+      http.post(
+        Uri.parse(url),
+        body: jsonEncode({
+          'fullName': _fullNameController.text,
+          'email': _emailController.text,
+          'phone': _phoneController.text,
+        }),
+      );
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => MainScreen()),
